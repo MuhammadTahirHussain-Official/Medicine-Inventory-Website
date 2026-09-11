@@ -1,0 +1,150 @@
+/* ================= Base Reset ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4; /* light background */
+    color: #000;
+}
+
+/* ================= Auth Container ================= */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    background: #fff; /* white card */
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* subtle black shadow */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.auth-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= Toggle Button ================= */
+.form-toggle {
+    margin-bottom: 30px;
+}
+
+#toggle-btn {
+    background: transparent;
+    border: 2px solid #000; /* black border */
+    padding: 10px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #000; /* black text */
+    transition: all 0.3s ease;
+}
+
+#toggle-btn:hover {
+    background: #000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ================= Forms ================= */
+.auth-form {
+    display: none;
+    flex-direction: column;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.auth-form h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #000; /* black heading */
+    letter-spacing: 1px;
+}
+
+/* ================= Input Groups ================= */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333; /* dark grey labels */
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc; /* light gray border */
+    background: #f9f9f9; /* light input background */
+    color: #000; /* black text */
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= Submit Button ================= */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #000; /* black button */
+    color: #fff; /* white text */
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #fff; /* invert button on hover */
+    color: #000;
+    border: 1px solid #000;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 480px) {
+    .auth-container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.6rem;
+    }
+
+    .submit-btn {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    #toggle-btn {
+        padding: 8px 20px;
+        font-size: 0.95rem;
+    }
+}

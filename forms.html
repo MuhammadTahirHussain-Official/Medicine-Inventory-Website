@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Inventory</title>
+    <link rel="icon" type="image/jpeg" href="fav.jpeg">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+
+<div class="main-container">
+    <!-- Navigation Bar -->
+    <nav id="nav">
+        <h3><img src="icon.png" alt="Logo"></h3>
+        <div id="nav-part2">
+            <h4><a href="index.html">Home</a></h4>
+        </div>
+    </nav>
+
+    <!-- Form Wrapper that contain the form details -->
+    <div class="form-wrapper">
+
+        <div class="form-header">
+            <h2 class="form-title">Medicine Inventory Entry</h2>
+            <p class="form-description">
+                Enter complete medicine details for inventory management.
+            </p>
+        </div>
+
+        <form action="form_php.php" method="POST">
+
+            <div class="form-group">
+                <label class="form-label">Medicine ID*</label>
+                <input type="text" name="medicine_id" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Medicine Name*</label>
+                <input type="text" name="medicine_name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Generic Name*</label>
+                <input type="text" name="generic_name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Batch Number*</label>
+                <input type="text" name="batch_no" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Expiry Date*</label>
+                <input type="date" name="expiry_date" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Manufacturer*</label>
+                <input type="text" name="manufacturer" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Supplier Name*</label>
+                <input type="text" name="supplier_name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Purchase Date*</label>
+                <input type="date" name="purchase_date" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Purchase Quantity*</label>
+                <input type="number" name="purchase_qty" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Purchase Rate*</label>
+                <input type="number" step="0.01" name="purchase_rate" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">MRP*</label>
+                <input type="number" step="0.01" name="mrp" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Selling Rate*</label>
+                <input type="number" step="0.01" name="selling_rate" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Discount (%)</label>
+                <input type="number" step="0.01" name="discount_percent" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">HSN Code*</label>
+                <input type="text" name="hsn_code" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">GST (%) *</label>
+                <input type="number" step="0.01" name="gst_percent" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Rack Number*</label>
+                <input type="text" name="rack_no" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Box Number*</label>
+                <input type="text" name="box_no" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Reorder Level*</label>
+                <input type="number" name="reorder_level" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Current Stock*</label>
+                <input type="number" name="current_stock" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Unit*</label>
+                <input type="text" name="unit" class="form-input" placeholder="Tablet / Bottle" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Packing*</label>
+                <input type="text" name="packing" class="form-input" placeholder="10x10" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Location*</label>
+                <input type="text" name="location" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Quality Check Status*</label>
+                <select name="quality_check_status" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Categories*</label>
+                <select name="categories" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="pills">Pills</option>
+                    <option value="syrips">Syrips</option>
+                    <option value="tubes">Tubes</option>
+                    <option value="tools">Tools</option>
+                </select>
+            </div>
+
+            <div class="form-group wide">
+                <label class="form-label">Remarks</label>
+                <textarea name="remarks" rows="3" class="form-textarea"></textarea>
+            </div>
+            <div class="button-row">
+                <button type="submit" class="submit-btn">Save Medicine</button>
+                <button type="reset" class="reset-btn">Reset Data</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

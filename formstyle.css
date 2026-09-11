@@ -1,0 +1,237 @@
+/* =====================
+    Base Reset
+    This section removes default browser styling and sets up
+    a consistent starting point for all elements
+===================== */
+* {
+    margin: 0;              /* Remove default spacing around elements */
+    padding: 0;             /* Remove default inner spacing */
+    box-sizing: border-box;  /* Include padding/border in width/height calculations */
+    font-family: "Inter", sans-serif;  /* Set the default font for all text */
+}
+
+html, body {
+    width: 100%;            /* Make page take full screen width */
+    height: 100%;           /* Make page take full screen height */
+    background: #f5f5f5;    /* Set light gray background color */
+}
+
+/* =====================
+    Navbar
+    The top navigation bar that stays fixed at the top of the page
+===================== */
+nav#nav {
+    position: fixed;        /* Keep navbar in place even when scrolling */
+    top: 0;                 /* Stick to top of screen */
+    left: 0;                /* Stick to left of screen */
+    width: 100%;            /* Make navbar span full width */
+    height: 64px;           /* Set navbar height */
+    padding: 0 32px;        /* Add spacing on left and right inside navbar */
+    background: #000;       /* Black background */
+    display: flex;          /* Use flexbox layout system */
+    align-items: center;    /* Vertically center items */
+    justify-content: space-between;  /* Spread items to edges */
+    z-index: 1000;          /* Place above other elements */
+}
+
+nav h3 img {
+    width: 40px;            /* Set logo image width */
+}
+
+#nav-part2 h4 {
+    padding: 8px 18px;      /* Add spacing inside button */
+    border-radius: 20px;    /* Round the button corners */
+    position: relative;     /* Allow absolute positioning of child elements */
+    overflow: hidden;       /* Hide content that goes outside button */
+}
+
+#nav-part2 h4 a {
+    color: white;           /* White text */
+    text-decoration: none;  /* Remove underline from link */
+    font-size: 13px;        /* Set text size */
+    position: relative;     /* Position relative to button */
+    z-index: 2;             /* Place above the white background effect */
+}
+
+#nav-part2 h4::after {
+    content: "";            /* Create invisible element for hover effect */
+    position: absolute;     /* Position it absolutely within button */
+    inset: 0;               /* Make it fill the entire button */
+    background: white;      /* White color */
+    transform: translateY(100%);  /* Move it down, out of view initially */
+    transition: 0.3s ease;  /* Animate smoothly over 0.3 seconds */
+    z-index: 1;             /* Place behind text */
+}
+
+#nav-part2 h4:hover::after {
+    transform: translateY(0);  /* Slide white background up on hover */
+}
+
+#nav-part2 h4:hover a {
+    color: black;           /* Change text to black on hover */
+}
+
+/* =====================
+    Main Container
+    Wrapper that centers the form on the page
+===================== */
+.main-container {
+    padding-top: 100px;     /* Add space from navbar */
+    padding-bottom: 40px;   /* Add space at bottom */
+    padding-left: 16px;     /* Add space from left edge */
+    padding-right: 16px;    /* Add space from right edge */
+    display: flex;          /* Use flexbox layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+}
+
+/* =====================
+    Form Card
+    The white box containing the form
+===================== */
+.form-wrapper {
+    width: 90%;             /* Take 90% of available space */
+    max-width: 1200px;      /* Don't get wider than 1200px */
+    background: #ffffff;    /* White background */
+    border-radius: 10px;    /* Round the corners */
+    padding: 32px;          /* Add internal spacing */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);  /* Add subtle shadow for depth */
+}
+
+/* =====================
+    Header
+    Title and description of the form
+===================== */
+.form-header {
+    border-bottom: 1px solid #e5e7eb;  /* Add line below header */
+    padding-bottom: 16px;  /* Space between header and line */
+    margin-bottom: 24px;   /* Space between header and form fields */
+}
+
+.form-title {
+    font-size: 24px;        /* Large text size */
+    font-weight: 600;       /* Bold text */
+    color: #111827;         /* Dark gray/black color */
+}
+
+.form-description {
+    font-size: 14px;        /* Smaller text size */
+    color: #6b7280;         /* Medium gray color */
+    margin-top: 6px;        /* Space above description */
+}
+
+/* =====================
+    Form Layout
+    Arranges form fields in rows
+===================== */
+form {
+    display: flex;          /* Use flexbox */
+    flex-wrap: wrap;        /* Allow items to wrap to next line */
+    gap: 20px;              /* Space between form fields */
+}
+
+.form-group {
+    display: flex;          /* Use flexbox */
+    flex-direction: column;  /* Stack label above input vertically */
+    flex: 1 1 22%;          /* Each field takes about 22% width (4 per row) */
+    min-width: 150px;       /* Don't shrink below 150px */
+}
+
+/* =====================
+    Labels
+    Text labels for form fields
+===================== */
+.form-label {
+    font-size: 13px;        /* Small text */
+    font-weight: 500;       /* Medium bold */
+    color: #374151;         /* Dark gray */
+    margin-bottom: 6px;     /* Space between label and input */
+}
+
+/* =====================
+    Inputs
+    Text fields, dropdowns, and text areas
+===================== */
+.form-input,
+.form-select,
+.form-textarea {
+    padding: 8px 10px;      /* Internal spacing */
+    font-size: 14px;        /* Text size */
+    border-radius: 6px;     /* Slightly round corners */
+    border: 1px solid #d1d5db;  /* Light gray border */
+    min-height: 40px;       /* Minimum height for inputs */
+}
+
+.form-textarea {
+    resize: vertical;       /* Allow only vertical resizing */
+    min-height: 100px;      /* Make text area taller */
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;          /* Remove default browser outline */
+    border-color: black;    /* Change border to black when focused */
+    box-shadow: 0 0 0 1px black;  /* Add black glow effect */
+}
+
+/* =====================
+    Buttons
+    Submit and reset buttons
+===================== */
+.button-row {
+    width: 100%;            /* Full width */
+    display: flex;          /* Use flexbox */
+    justify-content: flex-end;  /* Align buttons to right */
+    gap: 12px;              /* Space between buttons */
+    margin-top: 24px;       /* Space above buttons */
+}
+
+.submit-btn,
+.reset-btn {
+    padding: 10px 22px;     /* Internal button spacing */
+    border-radius: 6px;     /* Round corners */
+    border: 1px solid #d1d5db;  /* Light gray border */
+    background: white;      /* White background */
+    color: black;           /* Black text */
+    cursor: pointer;        /* Show clickable cursor */
+    transition: all 0.3s ease;  /* Smooth color change animation */
+}
+
+.submit-btn:hover,
+.reset-btn:hover {
+    background: black;      /* Black background on hover */
+    color: white;           /* White text on hover */
+}
+
+/* =====================
+    Responsive
+    Adjusts layout for different screen sizes
+===================== */
+@media (max-width: 1024px) {
+    /* For tablets: 2 fields per row instead of 4 */
+    .form-group {
+        flex: 1 1 48%;       /* Each field takes 48% (2 per row) */
+    }
+
+    .form-group.wide {
+        flex: 1 1 100%;      /* Wide fields take full width */
+    }
+}
+
+@media (max-width: 640px) {
+    /* For phones: 1 field per row, stack everything */
+    .form-group,
+    .form-group.wide {
+        flex: 1 1 100%;      /* Each field takes full width */
+    }
+
+    .button-row {
+        flex-direction: column;  /* Stack buttons vertically */
+    }
+
+    .submit-btn,
+    .reset-btn {
+        width: 100%;        /* Make buttons full width */
+    }
+}

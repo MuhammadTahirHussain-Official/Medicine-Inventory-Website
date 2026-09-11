@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Title shown in browser tab -->
+    <title>Category Medicines</title>
+    <!-- Make website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="fav.jpeg">
+
+    <style>
+        /* =====================
+            UNIVERSAL STYLES - Applied to all elements
+        ===================== */
+        /* Reset default browser styles for all elements */
+        * {
+            margin: 0;                 /* Remove default spacing around elements */
+            padding: 0;                /* Remove default internal spacing */
+            box-sizing: border-box;    /* Include padding/border in element width/height */
+            font-family: "Inter", sans-serif; /* Set default font for all text */
+        }
+
+        /* Make html and body take full screen height and width */
+        html,
+        body {
+            width: 100%;               /* Make body take full width of screen */
+            height: 100%;              /* Make body take full height of screen */
+        }
+
+        /* Style the body - set background color and padding */
+        body {
+            font-family: "Inter", Arial, sans-serif; /* Define font family with fallback options */
+            background: #f4f6f8;       /* Light gray background color for entire page */
+            padding: 30px;             /* Add 30px space inside the body on all sides */
+        }
+
+        /* =====================
+            NAVBAR - Top navigation bar that stays fixed at top
+        ===================== */
+        /* Fixed navbar that stays at top when scrolling */
+        nav#nav {
+            position: fixed;           /* Keep navbar fixed at top even when scrolling */
+            top: 0;                    /* Position at top of page */
+            left: 0;                   /* Position at left edge of page */
+            width: 100%;               /* Make navbar span full width of screen */
+            height: 64px;              /* Set navbar height to 64 pixels */
+            padding: 0 32px;           /* Add 32px space on left and right inside navbar */
+            background: #000;          /* Black background color for navbar */
+            display: flex;             /* Use flexbox layout to arrange items horizontally */
+            align-items: center;       /* Vertically center items in navbar */
+            justify-content: space-between; /* Spread navbar items to left and right edges */
+            z-index: 1000;             /* Place navbar on top of other page elements */
+            box-shadow: 0 10px 30px rgba(0, 3, 3, 0.15); /* Add subtle shadow below navbar */
+        }
+
+        /* Style logo image in navbar */
+        nav h3 img {
+            width: 40px;               /* Set logo image width to 40 pixels */
+        }
+
+        /* =====================
+            NAVIGATION BUTTONS - Styled buttons in navbar
+        ===================== */
+        /* Style navigation buttons */
+        #nav-part2 h4 {
+            padding: 8px 18px;         /* Add space inside each button (top/bottom: 8px, left/right: 18px) */
+            border-radius: 20px;       /* Round button corners to create pill-shaped buttons */
+            position: relative;        /* Allow positioning of ::after element */
+            overflow: hidden;          /* Hide overflowing content (for animation effect) */
+        }
+
+        /* Style navigation links - remove underline and set color */
+        #nav-part2 h4 a {
+            color: white;              /* Make link text white */
+            text-decoration: none;     /* Remove underline from link */
+            font-size: 13px;           /* Set link text size to 13 pixels */
+            position: relative;        /* Allow positioning relative to parent */
+            z-index: 2;                /* Place text on top of background animation */
+        }
+
+        /* Create white background that slides up on hover */
+        #nav-part2 h4::after {
+            content: "";               /* Create a pseudo-element (hidden element) */
+            position: absolute;        /* Position it absolutely within the button */
+            inset: 0;                  /* Make it fill entire button */
+            background: white;         /* White background for animation */
+            transform: translateY(100%); /* Start below button (hidden) */
+            transition: 0.3s ease;     /* Smooth animation over 0.3 seconds */
+            z-index: 1;                /* Place animation background behind text */
+        }
+
+        /* Animate background on hover - slide white background up when hovering */
+        #nav-part2 h4:hover::after {
+            transform: translateY(0);  /* Move background to normal position (visible) */
+        }
+
+        /* Change text color when hovering over nav button */
+        #nav-part2 h4:hover a {
+            color: black;              /* Change link text to black when hovering */
+        }
+
+        /* =====================
+            PAGE CONTENT STYLES
+        ===================== */
+        /* Style main page heading */
+        h1 {
+            padding-top: 50px;         /* Add 50px space above heading (account for fixed navbar) */
+            text-align: center;        /* Center the heading text */
+            font-size: 50px;           /* Set heading text size to 50 pixels */
+            margin-bottom: 30px;       /* Add 30px space below heading */
+        }
+
+        /* =====================
+            TABLE STYLES - Display medicine data in organized rows and columns
+        ===================== */
+        /* Make table scrollable on small screens */
+        .table-container {
+            max-width: 100%;           /* Don't make container wider than screen */
+            overflow-x: auto;          /* Add horizontal scrollbar if table is too wide */
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;               /* Make table full width of its container */
+            min-width: 1000px;         /* Minimum width to display properly */
+            border-collapse: collapse;  /* Remove gaps between table cells */
+            background: #fff;          /* White background for table */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Add shadow effect around table */
+            border-radius: 8px;        /* Round table corners slightly */
+            overflow: hidden;          /* Hide content that overflows rounded corners */
+        }
+
+        /* Style table header (top row with column names) */
+        thead {
+            background: #000;          /* Black background for header */
+            color: #fff;               /* White text in header */
+        }
+
+        /* Style table cells (all data cells) */
+        th,
+        td {
+            padding: 14px 16px;        /* Add space inside each cell */
+            border-bottom: 1px solid #e5e7eb; /* Add light gray line below each cell */
+            text-align: left;          /* Align text to left side of cells */
+        }
+
+        /* Alternate row colors for better readability */
+        tbody tr:nth-child(even) {
+            background: #f9fafb;       /* Very light gray for even rows */
+        }
+
+        /* Change background color when hovering over row - visual feedback */
+        tbody tr:hover {
+            background: #d6d6d6;       /* Darker gray when hovering over row */
+            cursor: pointer;           /* Change cursor to pointer (hand) on hover */
+        }
+
+        /* =====================
+            MESSAGE/ERROR STYLES
+        ===================== */
+        /* Style error/message box */
+        .message {
+            text-align: center;        /* Center the message text */
+            padding: 15px;             /* Add space inside message box */
+            background: #fee2e2;       /* Light red background */
+            color: #991b1b;            /* Dark red text */
+            border-radius: 6px;        /* Slightly round corners */
+            width: 60%;                /* Make message box 60% of screen width */
+            margin: 20px auto;         /* Center message box and add space above/below */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================
+        NAVIGATION BAR - Top menu with logo and home button
+    ===================== -->
+    <nav id="nav">
+        <h3><img src="icon.png" alt="Logo"></h3>
+        <div id="nav-part2">
+            <!-- Link to home page -->
+            <h4><a href="index.html">Home</a></h4>
+        </div>
+    </nav>
+
+    <!-- =====================
+        PAGE TITLE - Will be filled by JavaScript with category name
+    ===================== -->
+    <h1 id="title"></h1>
+
+    <!-- =====================
+        TABLE CONTAINER - Where the medicine list will appear
+    ===================== -->
+    <div id="result" class="table-container"></div>
+
+    <!-- =====================
+        JAVASCRIPT - Handles page logic and interactions
+    ===================== -->
+    <script>
+        // ===== Get category from URL =====
+        // Get all URL parameters (like ?category=Antibiotics)
+        const params = new URLSearchParams(window.location.search);
+        // Extract the category value from URL (e.g., "Antibiotics" from ?category=Antibiotics)
+        const category = params.get("category");
+
+        // ===== Set page title =====
+        // Update the page heading with the category name (e.g., "Antibiotics Medicines")
+        document.getElementById("title").innerText = category + " Medicines";
+
+        // ===== Fetch and display medicine data =====
+        // Send request to server to get medicines in this category
+        fetch("category.php?category=" + encodeURIComponent(category))
+            .then(res => res.text()) // Wait for server response and convert to text/HTML
+            .then(data => {
+                // Insert the HTML table received from server into the page
+                document.getElementById("result").innerHTML = data;
+            });
+
+        // ===== Navigate to medicine details =====
+        // Function to handle when user clicks on a medicine row
+        function viewMedicine(id) {
+            // Redirect to medicine detail page with medicine ID in URL
+            window.location.href = "view_medicine.php?id=" + id;
+        }
+    </script>
+
+</body>
+
+</html>

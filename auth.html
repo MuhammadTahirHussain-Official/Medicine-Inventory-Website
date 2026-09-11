@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="icon" type="image/jpeg" href="fav.jpeg">
+    
+</head>
+<body>
+    <div class="auth-container">
+
+        <div class="form-toggle">
+            <button id="toggle-btn">Switch to Sign Up</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" action="login_process.php" method="POST" class="auth-form active">
+            <h2>Login</h2>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signup-form" action="signup_process.php" method="POST" class="auth-form">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" name="fullname" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+
+        toggleBtn.addEventListener('click', () => {
+            loginForm.classList.toggle('active');
+            signupForm.classList.toggle('active');
+
+            // Update button text dynamically
+            if(loginForm.classList.contains('active')) {
+                toggleBtn.textContent = "Switch to Sign Up";
+            } else {
+                toggleBtn.textContent = "Switch to Login";
+            }
+        });
+
+        // Optional: handle query parameter for default form
+        const urlParams = new URLSearchParams(window.location.search);
+        const formType = urlParams.get('form');
+        if(formType === 'signup') toggleBtn.click();
+    </script>
+</body>
+</html>

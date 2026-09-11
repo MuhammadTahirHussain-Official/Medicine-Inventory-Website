@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>Medicine Search</title> <!-- Title of the webpage -->
+    <link rel="icon" type="image/jpeg" href="fav.jpeg">
+    
+    <style>
+        /* General styles for all elements */
+        * {
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            font-family: "Inter", Arial, sans-serif; /* Set font family */
+        }
+
+        /* Background style for the body */
+        body {
+            min-height: 100vh; /* Minimum height of the viewport */
+            padding: 40px 20px; /* Padding around the content */
+            color: #111; /* Text color */
+        }
+
+        /* Navbar styles */
+        nav#nav {
+            position: fixed; /* Fixed position at the top */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            height: 64px; /* Height of the navbar */
+            padding: 0 32px; /* Padding inside the navbar */
+            background: #000; /* Background color */
+            display: flex; /* Flexbox layout */
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space between items */
+            z-index: 1000; /* Stack order */
+            box-shadow: 0 10px 30px rgba(0, 3, 3, 0.15); /* Shadow effect */
+        }
+
+        /* Logo image style */
+        nav h3 img {
+            width: 40px; /* Width of the logo */
+        }
+
+        /* Navigation link styles */
+        #nav-part2 h4 {
+            padding: 8px 18px; /* Padding around the link */
+            border-radius: 20px; /* Rounded corners */
+            position: relative; /* Position for hover effect */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        /* Link styles */
+        #nav-part2 h4 a {
+            color: white; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-size: 13px; /* Font size */
+            position: relative; /* Position for hover effect */
+            z-index: 2; /* Stack order */
+        }
+
+        /* Hover effect for links */
+        #nav-part2 h4::after {
+            content: ""; /* Empty content for the effect */
+            position: absolute; /* Absolute positioning */
+            inset: 0; /* Fill the parent */
+            background: white; /* Background color for the effect */
+            transform: translateY(100%); /* Start below the link */
+            transition: 0.3s ease; /* Smooth transition */
+            z-index: 1; /* Stack order */
+        }
+
+        /* Hover effect on link */
+        #nav-part2 h4:hover::after {
+            transform: translateY(0); /* Move up on hover */
+        }
+
+        /* Change link color on hover */
+        #nav-part2 h4:hover a {
+            color: black; /* Change link color */
+        }
+
+        /* Header styles */
+        header {
+            text-align: center; /* Center text */
+            margin-bottom: 40px; /* Space below the header */
+            padding-top: 50px; /* Space above the header */
+        }
+
+        /* Main title styles */
+        header h1 {
+            font-size: 2.8rem; /* Font size */
+            font-weight: bold; /* Bold text */
+        }
+
+        /* Search bar container styles */
+        .search-container {
+            max-width: 700px; /* Maximum width */
+            margin: 0 auto 30px auto; /* Center the container */
+            display: flex; /* Flexbox layout */
+            background: rgba(255, 255, 255, 0.95); /* Background with transparency */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Shadow effect */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        /* Input field styles */
+        .search-container input {
+            flex: 1; /* Take available space */
+            padding: 16px 20px; /* Padding inside the input */
+            font-size: 1rem; /* Font size */
+            border: none; /* No border */
+            outline: none; /* No outline */
+        }
+
+        /* Button styles */
+        .search-container button {
+            padding: 16px 25px; /* Padding inside the button */
+            background: #000; /* Background color */
+            color: #fff; /* Text color */
+            border: none; /* No border */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-weight: bold; /* Bold text */
+        }
+
+        /* Button hover effect */
+        .search-container button:hover {
+            background: #333; /* Darker background on hover */
+        }
+
+        /* Table container styles */
+        .table-container {
+            max-width: 100%; /* Maximum width */
+            overflow-x: auto; /* Horizontal scroll if needed */
+        }
+
+        /* Table styles */
+        table {
+            width: 100%; /* Full width */
+            min-width: 1000px; /* Minimum width */
+            border-collapse: collapse; /* Collapse borders */
+            background: rgba(255, 255, 255, 0.97); /* Background with transparency */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Shadow effect */
+        }
+
+        /* Table header styles */
+        thead {
+            background: #000; /* Background color */
+            color: #fff; /* Text color */
+        }
+
+        /* Table cell styles */
+        th,
+        td {
+            padding: 14px 16px; /* Padding inside cells */
+            border-bottom: 1px solid #e5e7eb; /* Bottom border */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Even row styles */
+        tbody tr:nth-child(even) {
+            background: #f9f9f9; /* Background color for even rows */
+        }
+
+        /* Row hover effect */
+        tbody tr:hover {
+            background: #dcdcdc; /* Change background on hover */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        /* Message styles */
+        .message {
+            max-width: 600px; /* Maximum width */
+            margin: 20px auto; /* Center the message */
+            padding: 15px; /* Padding inside the message */
+            border-radius: 8px; /* Rounded corners */
+            text-align: center; /* Center text */
+        }
+
+        /* Error message styles */
+        .message.error {
+            background: #fee2e2; /* Background color for error */
+            color: #991b1b; /* Text color for error */
+        }
+
+        /* Responsive styles for smaller screens */
+        @media(max-width:768px) {
+            .search-container {
+                flex-direction: column; /* Stack elements vertically */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="nav">
+        <h3><img src="icon.png" alt="Logo"></h3> <!-- Logo image -->
+        <div id="nav-part2">
+            <h4><a href="index.html">Home</a></h4> <!-- Navigation link to Home -->
+        </div>
+    </nav>
+
+    <header>
+        <h1>Medicine Search Portal</h1> <!-- Main title of the page -->
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="medicine_name" placeholder="Enter Medicine Name"> <!-- Input field for medicine name -->
+        <button onclick="searchMedicine()">Search</button> <!-- Button to trigger search -->
+    </div>
+
+    <div id="result" class="table-container"></div> <!-- Container for search results -->
+
+    <script>
+        // Load all medicines when the document is ready
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("search.php") // Fetch data from search.php
+                .then(res => res.text()) // Convert response to text
+                .then(data => {
+                    document.getElementById("result").innerHTML = data; // Display data in the result container
+                });
+        });
+
+        // Function to search for a medicine
+        function searchMedicine() {
+            let name = document.getElementById("medicine_name").value.trim(); // Get input value
+            let url = "search.php"; // Base URL for fetching data
+            if (name !== "") {
+                url += "?name=" + encodeURIComponent(name); // Append medicine name to URL if not empty
+            }
+
+            fetch(url) // Fetch data from the constructed URL
+                .then(res => res.text()) // Convert response to text
+                .then(data => {
+                    document.getElementById("result").innerHTML = data; // Display data in the result container
+                })
+                .catch(() => {
+                    document.getElementById("result").innerHTML =
+                        "<div class='message error'>Error loading data</div>"; // Show error message if fetch fails
+                });
+        }
+
+        // Function to view details of a medicine
+        function viewMedicine(id) {
+            window.location.href = "view_medicine.php?id=" + id; // Redirect to the medicine detail page
+        }
+    </script>
+
+</body>
+
+</html>

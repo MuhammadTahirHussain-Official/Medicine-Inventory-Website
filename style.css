@@ -1,0 +1,432 @@
+/* ================= UNIVERSAL STYLES ================= */
+/* Apply to ALL elements on the page */
+* {
+    margin: 0;              /* Remove default spacing around elements */
+    padding: 0;             /* Remove default internal spacing */
+    box-sizing: border-box; /* Include padding and border in width/height calculations */
+    font-family: sans-serif; /* Use sans-serif fonts throughout */
+}
+
+/* Set the HTML and BODY to full screen height and width */
+html, body {
+    height: 100%;  /* Take up full height of viewport */
+    width: 100%;   /* Take up full width of viewport */
+}
+
+/* Style the text selection color (when user highlights text) */
+*::selection {
+    color: white;              /* Text color when selected */
+    background-color: black;   /* Highlight background color */
+}
+
+/* ================= PAGE 1 ================= */
+
+/* Main container for the first page with background image */
+#page1 {
+    height: 100vh;                    /* Full viewport height */
+    width: 200vh;                     /* Twice the viewport width */
+    background-image: url('images/final.jpg'); /* Add background image */
+    background-size: cover;           /* Scale image to cover entire container */
+    background-position: center;      /* Center the background image */
+    background-repeat: no-repeat;     /* Don't repeat the image */
+    position: relative;               /* Allow child elements to position relative to this */
+    margin: 0;                        /* No margin */
+}
+
+/* Navigation bar styling */
+nav {
+    padding: 1vw 2vw;              /* Add spacing inside (1% height, 2% width) */
+    width: 100%;                   /* Take full width */
+    display: flex;   
+    flex-direction: row;              /* Use flexbox layout */
+    align-items: center;           /* Vertically center items */
+    justify-content: space-between; /* Space items apart horizontally */
+    border-bottom: 1px solid white; /* Add white line at bottom */
+}
+
+/* Logo image inside h3 */
+nav h3 img {
+    width: 40px; /* Small image size */
+}
+
+/* Container for navigation links */
+#nav-part2 {
+    display: flex;    /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+    gap: 1vw;         /* Space between items */
+}
+
+/* Individual navigation buttons */
+#nav-part2 h4 {
+    padding: 10px 20px;        /* Internal spacing */
+    border-radius: 50px;       /* Round corners */
+    font-weight: 500;          /* Medium text weight */
+    color: white;              /* White text */
+    font-size: 13px;           /* Small text */
+    position: relative;        /* For layering effects */
+    overflow: hidden;          /* Hide content that overflows */
+    z-index: 1;                /* Layer positioning */
+}
+
+/* Hidden background for button hover effect */
+#nav-part2 h4::after {
+    content: "";                    /* Create an empty element */
+    position: absolute;             /* Position it absolutely */
+    height: 100%;                   /* Full height of button */
+    width: 100%;                    /* Full width of button */
+    background-color: white;        /* White background */
+    left: 0;                        /* Align to left */
+    bottom: -100%;                  /* Start below the button */
+    border-radius: 50%;             /* Round corners */
+    transition: all ease 0.4s;      /* Smooth animation over 0.4 seconds */
+    z-index: -1;                    /* Place behind text */
+}
+
+/* Animation when hovering over navigation button */
+#nav-part2 h4:hover::after {
+    bottom: 0;         /* Slide background up to cover button */
+    border-radius: 0;  /* Remove rounded corners */
+}
+
+/* Links inside navigation buttons */
+#nav-part2 h4 a {
+    color: white;              /* White text */
+    text-decoration: none;     /* Remove underline */
+    position: relative;        /* For layering */
+    z-index: 2;                /* Place above background */
+}
+
+/* Change link text color on hover */
+#nav-part2 h4:hover a {
+    color: black; /* Black text when hovering */
+}
+
+/* ================= CENTER CONTENT ================= */
+
+/* Main content area in center of page 1 */
+#center {
+    height: 70vh;           /* 70% of viewport height */
+    width: 100%;            /* Full width */
+    display: flex;          /* Use flexbox */
+    align-items: center;    /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex-direction: column;  /* Stack items vertically */
+    color: white;           /* White text */
+}
+
+/* Text content wrapper */
+#content {
+    text-align: center; /* Center align text */
+}
+
+/* Main heading */
+#content h1 {
+    font-size: 6vw;      /* Very large responsive text */
+    line-height: 4vw;    /* Space between lines */
+    margin: 15px;        /* Spacing around heading */
+}
+
+/* Container for action links */
+#links {
+    margin-top: 15px;   /* Space above */
+    padding-top: 20px;  /* Space inside, above content */
+    display: flex;      /* Use flexbox */
+    gap: 30px;          /* Space between buttons */
+    position: relative; /* For animation line */
+}
+
+/* Animated line above links */
+#links::before {
+    content: "";                 /* Create empty element */
+    position: absolute;          /* Position it absolutely */
+    top: 0;                      /* Align to top */
+    left: 0;                     /* Start from left */
+    height: 1.5px;               /* Thin line */
+    width: 0;                    /* Start with no width */
+    background-color: white;     /* White color */
+    animation: drawTopBorder 1s forwards; /* Animate drawing line */
+}
+
+/* Animation that draws the line from left to right */
+@keyframes drawTopBorder {
+    0% { width: 0; }      /* Start with no width */
+    100% { width: 100%; } /* Expand to full width */
+}
+
+/* Styling for action buttons/links */
+#links a {
+    color: white;              /* White text */
+    text-decoration: none;     /* Remove underline */
+    font-size: 16px;           /* Text size */
+    border: 1px solid white;   /* White border around button */
+    padding: 10px 40px;        /* Internal spacing */
+    border-radius: 30px;       /* Round corners */
+    position: relative;        /* For layering */
+    overflow: hidden;          /* Hide overflowing content */
+    z-index: 1;                /* Layer positioning */
+    display: inline-block;     /* Display as button */
+}
+
+/* Background fill effect for button on hover */
+#links a::after {
+    content: "";                  /* Create empty element */
+    position: absolute;           /* Position absolutely */
+    height: 100%;                 /* Full height */
+    width: 100%;                  /* Full width */
+    background-color: white;      /* White background */
+    left: 0;                      /* Start from left */
+    bottom: -100%;                /* Start below button */
+    border-radius: 30px;          /* Round corners */
+    transition: all 0.4s ease;    /* Smooth animation */
+    z-index: -1;                  /* Place behind text */
+}
+
+/* Slide background up on hover */
+#links a:hover::after {
+    bottom: 0; /* Move background to cover button */
+}
+
+/* Change text color when background is visible */
+#links a:hover {
+    color: black; /* Black text */
+}
+
+/* ================= PAGE 2 ================= */
+
+/* Second page container */
+#page2 {
+    height: 100vh;              /* Full viewport height */
+    width: 200vh;               /* Twice viewport width */
+    background-color: rgb(23, 23, 23); /* Dark gray background */
+    display: flex;              /* Use flexbox */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
+}
+
+/* Container for category items */
+.categories-container {
+    display: flex;              /* Use flexbox */
+    flex-direction: column;     /* Stack vertically */
+    align-items: center;        /* Center items */
+    gap: 2rem;                  /* Space between items */
+    width: 100%;                /* Full width */
+}
+
+/* Heading for categories */
+.categories-container h2 {
+    color: white;    /* White text */
+    font-size: 3rem; /* Large text */
+}
+
+/* Wrapper for category items in a row */
+.elements-wrapper {
+    display: flex;              /* Use flexbox */
+    justify-content: space-evenly; /* Spread items evenly */
+    width: 100%;                /* Full width */
+}
+
+/* Individual category item card */
+#page2 .elem {
+    height: 80vh;                        /* Tall card */
+    width: 23%;                          /* About 1/4 of width */
+    background-color: white;             /* White background */
+    box-shadow: 0 0 20px 5px rgba(0,0,0,0.2); /* Shadow effect */
+    position: relative;                  /* For positioning child elements */
+}
+
+/* Image inside card that fills entire card */
+#page2 .elem img {
+    height: 100%;  /* Full height */
+    width: 100%;   /* Full width */
+    object-fit: cover; /* Scale to cover without distortion */
+}
+
+/* Details label on card */
+.elem .dets {
+    height: 40px;                          /* Button height */
+    width: 80%;                            /* 80% of card width */
+    position: absolute;                    /* Position over image */
+    background-color: rgba(0, 0, 0, 0.804); /* Semi-transparent black */
+    box-shadow: 0 0 20px 5px rgba(0,0,0,0.4); /* Shadow effect */
+    top: 50%;                              /* Center vertically */
+    left: 50%;                             /* Center horizontally */
+    transform: translate(-50%, -50%);      /* Adjust for centering */
+    border-radius: 50px;                   /* Round corners */
+    text-align: center;                    /* Center text */
+    padding-top: 8px;                      /* Space for text */
+    transition: all 0.3s ease;             /* Smooth animation on hover */
+}
+
+/* Link inside details */
+.elem .dets a {
+    text-decoration: none; /* Remove underline */
+    color: white;          /* White text */
+    font-weight: 500;      /* Medium bold */
+}
+
+/* Details button on hover - expand and change color */
+.elem .dets:hover {
+    background-color: white; /* White background */
+    height: 45px;            /* Slightly taller */
+    width: 85%;              /* Slightly wider */
+    padding-top: 12px;       /* More space for text */
+}
+
+/* Link text color on hover */
+.elem .dets:hover a {
+    color: black; /* Black text */
+}
+
+/* ================= PAGE 3 ================= */
+
+/* Third page container */
+#page3 {
+    width: 200vh;                  /* Twice viewport width */
+    background-color: rgb(70, 70, 70); /* Medium gray background */
+}
+
+/* Section for each person with image and text */
+.person-section {
+    height: 100vh;           /* Full viewport height */
+    display: flex;           /* Use flexbox */
+    align-items: center;     /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 5vw;                /* Space between image and text */
+    padding: 0 10vw;         /* Padding on sides */
+}
+
+/* Container for person's image */
+.person-img {
+    width: 35%;   /* 35% of section width */
+    height: 70vh; /* 70% of viewport height */
+}
+
+/* Image styling */
+.person-img img {
+    width: 100%;                    /* Full width */
+    height: 100%;                   /* Full height */
+    object-fit: cover;              /* Scale without distortion */
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); /* Shadow effect */
+}
+
+/* Container for person information text */
+.person-info {
+    width: 45%;  /* 45% of section width */
+    color: white; /* White text */
+}
+
+/* Person's name heading */
+.person-info h2 {
+    font-size: 3vw;      /* Large responsive text */
+    margin-bottom: 10px; /* Space below */
+}
+
+/* Person's title/role */
+.person-info h4 {
+    font-size: 1.2vw;    /* Smaller text */
+    font-weight: 400;    /* Normal weight */
+    opacity: 0.8;        /* Slightly transparent */
+    margin-bottom: 20px; /* Space below */
+}
+
+/* Person's biography/description */
+.person-info p {
+    font-size: 1.1vw;  /* Medium text size */
+    line-height: 1.7;  /* Spacious line spacing */
+}
+
+/* ================= PAGE 4 ================= */
+
+/* Fourth page container */
+#page4 {
+    height: 100vh; /* Full viewport height */
+    width: 200vh;  /* Twice viewport width */
+}
+
+/* Top section with quote */
+.quote-section {
+    height: 50vh;              /* Half of viewport height */
+    background-color: white;   /* White background */
+    display: flex;             /* Use flexbox */
+    flex-direction: column;    /* Stack vertically */
+    align-items: center;       /* Center items */
+    justify-content: center;   /* Center vertically */
+    text-align: center;        /* Center text */
+}
+
+/* Quote heading */
+.quote-section h1 {
+    font-size: 5vw;        /* Very large text */
+    letter-spacing: 4px;   /* Space between letters */
+    text-transform: uppercase; /* Convert to uppercase */
+}
+
+/* Quote description */
+.quote-section p {
+    font-size: 1.2vw;    /* Medium text */
+    opacity: 0.7;        /* Slightly transparent */
+    letter-spacing: 2px; /* Space between letters */
+}
+
+/* Bottom section - footer */
+.footer {
+    height: 50vh;                 /* Half viewport height */
+    background-color: black;      /* Black background */
+    color: white;                 /* White text */
+    display: flex;                /* Use flexbox */
+    flex-direction: column;       /* Stack vertically */
+    justify-content: space-between; /* Space content apart */
+}
+
+/* Footer content container */
+.footer-container {
+    display: flex;              /* Use flexbox */
+    justify-content: space-between; /* Spread items apart */
+    padding: 4vw 8vw;           /* Internal spacing */
+}
+
+/* Individual footer column */
+.footer-col {
+    width: 30%; /* About 1/3 width */
+}
+
+/* Column heading */
+.footer-col h3 {
+    font-size: 1.2vw;      /* Medium text */
+    margin-bottom: 20px;   /* Space below */
+}
+
+/* Text and list items in footer */
+.footer-col p,
+.footer-col li {
+    font-size: 0.9vw;     /* Smaller text */
+    opacity: 0.8;         /* Slightly transparent */
+    line-height: 1.6;     /* Comfortable line spacing */
+}
+
+/* Remove default bullet points from lists */
+.footer-col ul {
+    list-style: none; /* No bullets */
+}
+
+/* Links in footer */
+.footer-col a {
+    color: white;              /* White text */
+    text-decoration: none;     /* Remove underline */
+    opacity: 0.8;              /* Slightly transparent */
+}
+
+/* Links on hover - make brighter and underlined */
+.footer-col a:hover {
+    opacity: 1;                /* Full opacity */
+    text-decoration: underline; /* Add underline */
+}
+
+/* Bottom of footer with copyright */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2); /* Light border */
+    text-align: center;                          /* Center text */
+    padding: 1.5vw 0;                            /* Vertical spacing */
+    font-size: 0.9vw;                            /* Small text */
+    opacity: 0.7;                                /* Transparent */
+}

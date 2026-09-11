@@ -1,0 +1,204 @@
+/* ============================================
+    GLOBAL STYLES & RESET
+    ============================================ */
+
+/* Reset */
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: "Inter", Arial, sans-serif;
+}
+
+/* Body - Main page styling */
+body {
+     background: #f4f6f8;
+     color: #1a1a1a;
+     line-height: 1.7;
+     font-size: 16px;
+}
+
+/* ============================================
+    HERO SECTION
+    ============================================ */
+
+/* Hero - Full-width header with dark background */
+.hero {
+     background: #000;
+     color: #fff;
+     padding: 100px 20px;
+     text-align: center;
+}
+
+/* Hero h1 - Main title styling */
+.hero h1 {
+     font-size: 3rem;
+     margin-bottom: 20px;
+     font-weight: 700;
+     letter-spacing: 1px;
+}
+
+/* Subtitle - Descriptive text under hero title */
+.subtitle {
+     font-size: 1.25rem;
+     opacity: 0.85;
+     max-width: 800px;
+     margin: 0 auto;
+     line-height: 1.6;
+}
+
+/* ============================================
+    LAYOUT CONTAINER
+    ============================================ */
+
+/* Container - Max-width wrapper for content */
+.container {
+     max-width: 1100px;
+     margin: 60px auto;
+     padding: 0 20px;
+}
+
+/* ============================================
+    SECTION CONTENT STYLING
+    ============================================ */
+
+/* Sections - Spacing between content blocks */
+.section {
+     margin-bottom: 60px;
+}
+
+/* Section h2 - Primary heading with left border accent */
+.section h2 {
+     font-size: 2rem;
+     margin-bottom: 20px;
+     border-left: 6px solid #000;
+     padding-left: 15px;
+     color: #111;
+}
+
+/* Section h3 - Secondary heading */
+.section h3 {
+     margin-top: 25px;
+     margin-bottom: 12px;
+     font-size: 1.4rem;
+     color: #222;
+}
+
+/* Section p - Paragraph text with max-width constraint */
+.section p {
+     margin-bottom: 16px;
+     color: #333;
+     max-width: 900px;
+}
+
+/* ============================================
+    LIST STYLING
+    ============================================ */
+
+/* Lists - Unordered list indentation */
+.section ul {
+     margin-left: 25px;
+     margin-top: 10px;
+}
+
+/* List items - Spacing and line-height */
+.section ul li {
+     margin-bottom: 10px;
+     line-height: 1.6;
+}
+
+/* ============================================
+    TABLE STYLING
+    ============================================ */
+
+/* Table - Full-width data table with shadow */
+table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+     background: #fff;
+     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Table headers & cells - Padding and borders */
+th, td {
+     padding: 14px 18px;
+     border-bottom: 1px solid #e5e7eb;
+     text-align: left;
+}
+
+/* Table header - Dark background with white text */
+th {
+     background: #000;
+     color: #fff;
+     font-weight: 600;
+}
+
+/* ============================================
+    CODE BLOCKS
+    ============================================ */
+
+/* Pre - Preformatted code block styling */
+pre {
+     background: #111;
+     color: #0f0;
+     padding: 20px;
+     overflow-x: auto;
+     border-radius: 8px;
+     margin-top: 15px;
+     font-size: 0.95rem;
+     line-height: 1.5;
+}
+
+/* ============================================
+    FOOTER
+    ============================================ */
+
+/* Footer - Dark bottom section */
+.footer {
+     text-align: center;
+     padding: 35px 20px;
+     background: #000;
+     color: #fff;
+     font-size: 0.95rem;
+}
+
+/* ============================================
+    TEXT UTILITY STYLES
+    ============================================ */
+
+/* Paragraph and list text - Word wrapping for responsive text */
+p, li {
+     word-wrap: break-word;
+}
+
+/* ============================================
+    RESPONSIVE DESIGN - MOBILE ADJUSTMENTS
+    ============================================ */
+
+@media (max-width: 768px) {
+     /* Reduce hero title size on mobile */
+     .hero h1 {
+          font-size: 2.2rem;
+     }
+     
+     /* Reduce subtitle size on mobile */
+     .subtitle {
+          font-size: 1rem;
+     }
+     
+     /* Reduce section heading size on mobile */
+     .section h2 {
+          font-size: 1.6rem;
+     }
+     
+     /* Reduce secondary heading size on mobile */
+     .section h3 {
+          font-size: 1.2rem;
+     }
+     
+     /* Reduce body font size on mobile */
+     body {
+          font-size: 15px;
+     }
+}
